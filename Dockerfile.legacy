@@ -1,0 +1,13 @@
+# escape=`
+
+FROM mback2k/windows-vstools
+
+SHELL ["powershell", "-command"]
+
+ARG PYTHON_VERSION=2.7.14
+
+RUN Invoke-WebRequest "https://www.python.org/ftp/python/"$env:PYTHON_VERSION"/python-"$env:PYTHON_VERSION".amd64.msi" -OutFile "python-"$env:PYTHON_VERSION".amd64.msi"; `
+	Start-Process -FilePath "msiexec" -ArgumentList /i, "C:\python-"$env:PYTHON_VERSION".amd64.msi", ALLUSERS=1, ADDLOCAL=DefaultFeature, ADDLOCAL=Extensions -NoNewWindow -PassThru -Wait; `
+	Remove-Item "python-"$env:PYTHON_VERSION".amd64.msi";
+
+CMD ["powershell"]
