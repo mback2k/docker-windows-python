@@ -1,6 +1,8 @@
 # escape=`
 
-FROM mback2k/windows-vstools
+ARG BASE_TAG=vs14_1709
+
+FROM mback2k/windows-vstools:${BASE_TAG}
 
 SHELL ["powershell", "-command"]
 
