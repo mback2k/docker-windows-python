@@ -11,6 +11,6 @@ RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tl
 	Start-Process -FilePath "C:\python-"$env:PYTHON_VERSION"-amd64.exe" -ArgumentList /quiet, InstallAllUsers=1, CompileAll=1, PrependPath=1, Include_test=0 -NoNewWindow -PassThru -Wait; `
 	Remove-Item "python-"$env:PYTHON_VERSION"-amd64.exe";
 
-RUN python -m pip install -U pip setuptools wheel
+RUN python -m pip install -U pip setuptools wheel certifi
 
 CMD ["powershell"]
