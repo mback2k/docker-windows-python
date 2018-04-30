@@ -9,9 +9,9 @@ SHELL ["powershell", "-command"]
 ARG PYTHON_VERSION=2.7.14
 
 RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; `
-	Invoke-WebRequest "https://www.python.org/ftp/python/"$env:PYTHON_VERSION"/python-"$env:PYTHON_VERSION".amd64.msi" -OutFile "python-"$env:PYTHON_VERSION".amd64.msi"; `
-	Start-Process -FilePath "msiexec" -ArgumentList /i, "C:\python-"$env:PYTHON_VERSION".amd64.msi", /quiet, /qn, TARGETDIR=C:\Python, ALLUSERS=1, ADDLOCAL=ALL -NoNewWindow -PassThru -Wait; `
-	Remove-Item "python-"$env:PYTHON_VERSION".amd64.msi";
+    Invoke-WebRequest "https://www.python.org/ftp/python/"$env:PYTHON_VERSION"/python-"$env:PYTHON_VERSION".amd64.msi" -OutFile "C:\python-"$env:PYTHON_VERSION".amd64.msi"; `
+    Start-Process -FilePath "msiexec" -ArgumentList /i, "C:\python-"$env:PYTHON_VERSION".amd64.msi", /quiet, /qn, TARGETDIR=C:\Python, ALLUSERS=1, ADDLOCAL=ALL -NoNewWindow -PassThru -Wait; `
+    Remove-Item "C:\python-"$env:PYTHON_VERSION".amd64.msi";
 
 RUN python -m pip install -U pip setuptools wheel certifi
 
