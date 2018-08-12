@@ -1,6 +1,6 @@
 # escape=`
 
-ARG BASE_TAG=vs14_1709
+ARG BASE_TAG=vs14_1803
 
 FROM mback2k/windows-vstools:${BASE_TAG}
 
