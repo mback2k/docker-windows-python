@@ -6,7 +6,7 @@ FROM mback2k/windows-vstools:${BASE_TAG}
 
 SHELL ["powershell", "-command"]
 
-ARG PYTHON_VERSION=2.7.15
+ARG PYTHON_VERSION=2.7.16
 
 RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; `
     Invoke-WebRequest "https://www.python.org/ftp/python/"$env:PYTHON_VERSION"/python-"$env:PYTHON_VERSION".amd64.msi" -OutFile "C:\Windows\Temp\python-"$env:PYTHON_VERSION".amd64.msi"; `
