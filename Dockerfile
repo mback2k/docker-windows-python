@@ -4,8 +4,6 @@ ARG BASE_TAG=vs14_1803
 
 FROM mback2k/windows-vstools:${BASE_TAG}
 
-SHELL ["powershell", "-command"]
-
 ARG PYTHON_VERSION=3.6.8
 
 RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; `
@@ -14,5 +12,3 @@ RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tl
     Remove-Item @('C:\Windows\Temp\*', 'C:\Users\*\Appdata\Local\Temp\*') -Force -Recurse;
 
 RUN python -m pip install -U pip setuptools wheel certifi
-
-CMD ["powershell"]
